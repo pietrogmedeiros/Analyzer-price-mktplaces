@@ -1,0 +1,2 @@
+python analyze_csv_standalone.py
+python analyze_csv_standalone.py meu_novo_arquivo.csv
