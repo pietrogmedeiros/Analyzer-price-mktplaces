@@ -79,4 +79,4 @@ docker-compose up --build -d
 
 **Pietro Medeiros**
 
--   **LinkedIn:** [seu-linkedin](https://www.linkedin.com/in/pietro-medeiros-770bba162/)
+-   **LinkedIn:** [Meu Linkedin](https://www.linkedin.com/in/pietro-medeiros-770bba162/)
