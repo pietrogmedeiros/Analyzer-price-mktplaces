@@ -1,0 +1,69 @@
+# ===================================================================
+# GUIA RÁPIDO DE COMANDOS - WEBPRICE ANALYZER
+# ===================================================================
+
+Este arquivo contém os comandos essenciais para rodar, testar e
+gerenciar a aplicação localmente e com Docker.
+
+Execute os comandos a partir do diretório raiz do projeto (WEBPRICE-ANALYZER/).
+
+
+-------------------------------------------------------------------
+ MÉTODO 1: RODANDO COM DOCKER (RECOMENDADO PARA PRODUÇÃO)
+-------------------------------------------------------------------
+
+# Pré-requisito: Docker Desktop deve estar em execução.
+
+# 1. Construir as imagens e iniciar os contêineres (frontend e backend)
+#    O comando '--build' força a reconstrução das imagens se houver mudanças.
+#    Use '-d' para rodar em segundo plano (detached).
+docker-compose up --build -d
+
+# 2. Acessar a aplicação
+#    Abra o navegador e acesse:
+http://localhost
+
+# 3. Ver os logs dos contêineres (útil para depuração)
+docker-compose logs -f
+
+# 4. Parar e remover os contêineres
+docker-compose down
+
+
+-------------------------------------------------------------------
+ MÉTODO 2: RODANDO LOCALMENTE (IDEAL PARA DESENVOLVIMENTO)
+-------------------------------------------------------------------
+
+# Você precisará de dois terminais abertos simultaneamente.
+
+# --- Terminal 1: Rodar o Backend (Flask) ---
+
+# 1. Navegue para a pasta do backend
+cd backend
+
+# 2. (Opcional) Crie e ative o ambiente virtual, se ainda não tiver
+# python3 -m venv venv
+# source venv/bin/activate  # No macOS/Linux
+# .\\venv\\Scripts\\activate # No Windows
+
+# 3. Instale as dependências (apenas na primeira vez)
+pip install -r requirements.txt
+
+# 4. Inicie o servidor Flask
+python app.py
+
+
+# --- Terminal 2: Rodar o Frontend (React) ---
+
+# 1. Navegue para a pasta do frontend
+cd frontend
+
+# 2. Instale as dependências (apenas na primeira vez)
+npm install
+
+# 3. Inicie o servidor de desenvolvimento do Vite
+npm run dev
+
+# 4. Acessar a aplicação
+#    O terminal mostrará a URL. Geralmente é:
+http://localhost:5173

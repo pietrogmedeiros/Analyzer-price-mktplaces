@@ -1,5 +1,5 @@
 # backend/wsgi.py
-from app import app as application
+from app import app
 
-# O nome 'application' é um padrão esperado pela maioria dos servidores WSGI
-# (como o que a Hostinger usa para Python).
+if __name__ == "__main__":
+    app.run()

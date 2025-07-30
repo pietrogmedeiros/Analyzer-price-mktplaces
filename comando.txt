@@ -1,2 +1,6 @@
+#1 Comando
+conda activate webprice_analyzer_env
+#2 Comando
+cd /Users/pietro_medeiros/Downloads/webprice-analyzer/
+3# Comando
 python analyze_csv_standalone.py
-python analyze_csv_standalone.py meu_novo_arquivo.csv
