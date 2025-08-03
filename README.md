@@ -1,4 +1,4 @@
-# 🚀 WebPrice Analyzer: Análise Inteligente de Preços para Marketplaces
+# 🚀 Mkt Places Analyzer: Análise Inteligente de Preços para Marketplaces
 
 ![Versão](https://img.shields.io/badge/version-2.0.0-blue)
 ![Python](https://img.shields.io/badge/Python-3.9-3776AB?logo=python&logoColor=white)
