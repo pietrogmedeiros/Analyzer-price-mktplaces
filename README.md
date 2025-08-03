@@ -17,7 +17,7 @@ Uma aplicação full-stack containerizada que utiliza Machine Learning para anal
 
 Em ambientes de e-commerce e marketplaces, a precificação é um dos fatores mais críticos para o sucesso. Lojistas precisam constantemente monitorar concorrentes para se manterem competitivos, mas também precisam identificar oportunidades para aumentar a margem de lucro sem perder vendas.
 
-O **WebPrice Analyzer** resolve esse problema ao automatizar a análise de grandes volumes de dados de preços. A ferramenta processa arquivos CSV, identifica produtos onde o lojista está "perdendo" para a concorrência e, mais importante, aponta oportunidades onde o preço pode ser otimizado para cima, tudo isso dentro de um limite de ajuste seguro (3%) para evitar mudanças drásticas.
+O **Mkt Places Analyzer** resolve esse problema ao automatizar a análise de grandes volumes de dados de preços. A ferramenta processa arquivos CSV, identifica produtos onde o lojista está "perdendo" para a concorrência e, mais importante, aponta oportunidades onde o preço pode ser otimizado para cima, tudo isso dentro de um limite de ajuste seguro (3%) para evitar mudanças drásticas.
 
 ### 🆕 Novidades da Versão 2.0
 - **Arquitetura Containerizada Completa**: Frontend, Backend, Banco de Dados e Cache
@@ -118,16 +118,6 @@ docker-compose up --build -d
 ./docker-cleanup.sh
 ```
 
-### 📋 Formato do Arquivo CSV
-
-O arquivo CSV deve conter as seguintes colunas:
-- **PRODUTO**: Nome do produto
-- **STATUS**: Status atual (perdendo, ganhando, etc.)
-- **LOJISTA**: Nome do marketplace/lojista
-- **PRECO**: Preço atual do produto
-- **MAIS BARATO**: Menor preço encontrado na concorrência
-- **DIFERENÇA**: Diferença em valor absoluto
-- **PERCENTUAL**: Diferença percentual
 
 ### 🎯 Exemplo de Uso
 
