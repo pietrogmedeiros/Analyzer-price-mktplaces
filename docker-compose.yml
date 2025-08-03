@@ -14,13 +14,54 @@ services:
 
   # Serviço do Frontend
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://localhost:5000
     container_name: webprice-frontend
     restart: unless-stopped
     ports:
       - "80:80" # Mapeia a porta 80 do seu PC para a porta 80 do contêiner Nginx
     depends_on:
       - backend
+
+  # Banco de Dados PostgreSQL
+  database:
+    image: postgres:15-alpine
+    container_name: webprice-database
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: webprice_db
+      POSTGRES_USER: webprice_user
+      POSTGRES_PASSWORD: webprice_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # Cache Redis
+  redis:
+    image: redis:7-alpine
+    container_name: webprice-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # Interface de Administração do Banco
+  adminer:
+    image: adminer:4-standalone
+    container_name: webprice-adminer
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    depends_on:
+      - database
+
+volumes:
+  postgres_data:
+  redis_data:
 
 networks:
   default:

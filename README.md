@@ -1,13 +1,15 @@
-# 🚀 Mkt Place Analyzer: Análise Inteligente de Preços
+# 🚀 WebPrice Analyzer: Análise Inteligente de Preços para Marketplaces
 
-![Versão](https://img.shields.io/badge/version-1.0.0-blue)
+![Versão](https://img.shields.io/badge/version-2.0.0-blue)
 ![Python](https://img.shields.io/badge/Python-3.9-3776AB?logo=python&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-2.0-black?logo=flask&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-3.0-black?logo=flask&logoColor=white)
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791?logo=postgresql&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-7-DC382D?logo=redis&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-Uma aplicação full-stack que utiliza Machine Learning para analisar dados de preços de marketplaces, fornecendo insights acionáveis para otimização de estratégias de precificação.
+Uma aplicação full-stack containerizada que utiliza Machine Learning para analisar dados de preços de marketplaces, fornecendo insights acionáveis para otimização de estratégias de precificação com interface moderna e arquitetura escalável.
 
 ---
 
@@ -15,17 +17,26 @@ Uma aplicação full-stack que utiliza Machine Learning para analisar dados de p
 
 Em ambientes de e-commerce e marketplaces, a precificação é um dos fatores mais críticos para o sucesso. Lojistas precisam constantemente monitorar concorrentes para se manterem competitivos, mas também precisam identificar oportunidades para aumentar a margem de lucro sem perder vendas.
 
-O **Mkt Place Analyzer** resolve esse problema ao automatizar a análise de grandes volumes de dados de preços. A ferramenta processa um arquivo CSV, identifica produtos onde o lojista está "perdendo" para a concorrência e, mais importante, aponta oportunidades onde o preço pode ser otimizado para cima, tudo isso dentro de um limite de ajuste seguro (ex: 3%) para evitar mudanças drásticas.
+O **WebPrice Analyzer** resolve esse problema ao automatizar a análise de grandes volumes de dados de preços. A ferramenta processa arquivos CSV, identifica produtos onde o lojista está "perdendo" para a concorrência e, mais importante, aponta oportunidades onde o preço pode ser otimizado para cima, tudo isso dentro de um limite de ajuste seguro (3%) para evitar mudanças drásticas.
+
+### 🆕 Novidades da Versão 2.0
+- **Arquitetura Containerizada Completa**: Frontend, Backend, Banco de Dados e Cache
+- **Interface Moderna**: Dashboard responsivo com React e design moderno
+- **Configuração CORS Otimizada**: Suporte para desenvolvimento e produção
+- **Banco PostgreSQL**: Preparado para armazenamento de dados históricos
+- **Cache Redis**: Performance otimizada para análises frequentes
 
 ---
 
 ## ✨ Funcionalidades Principais
 
-*   **🧠 Análise Inteligente de Dados:** Processa arquivos CSV com dados de produtos, preços e concorrentes para gerar sugestões de ajuste.
+*   **🧠 Análise Inteligente de Dados:** Processa arquivos CSV com dados de produtos, preços e concorrentes para gerar sugestões de ajuste automatizadas.
 *   **🤖 Machine Learning Integrado:** Treina um modelo de Árvore de Decisão em tempo real a cada análise para identificar quais fatores (preço, diferença para o concorrente, etc.) são mais importantes para definir uma estratégia de ajuste.
-*   **📊 Dashboard Interativo:** Apresenta os resultados em um dashboard limpo e moderno, com cards de resumo, uma tabela detalhada das sugestões e insights do modelo de ML.
-*   **🌐 Interface Web Moderna:** Frontend construído com React, proporcionando uma experiência de usuário fluida e responsiva.
-*   **🐳 Containerização Completa:** Com Docker e Docker Compose, a aplicação (backend e frontend) pode ser executada em qualquer ambiente com um único comando, garantindo consistência e facilidade de implantação.
+*   **📊 Dashboard Interativo:** Interface moderna com React apresentando resultados em cards de resumo, tabelas detalhadas e insights do modelo de ML.
+*   **🌐 Interface Web Responsiva:** Frontend construído com React e Vite, proporcionando uma experiência de usuário fluida em qualquer dispositivo.
+*   **🐳 Arquitetura Containerizada:** Aplicação completa com Docker Compose incluindo frontend, backend, banco PostgreSQL, cache Redis e interface de administração.
+*   **⚡ Performance Otimizada:** Cache Redis para análises frequentes e Nginx para servir o frontend com alta performance.
+*   **🔧 Configuração Flexível:** Suporte para desenvolvimento local e produção com variáveis de ambiente configuráveis.
 
 ---
 
@@ -63,8 +74,8 @@ Para executar o projeto, siga as instruções no arquivo `comandos.txt` ou no gu
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
-cd SEU_REPOSITORIO
+git clone https://github.com/pietrogmedeiros/Analyzer-price-mktplaces.git
+cd Analyzer-price-mktplaces
 
 # 2. Construa e inicie os contêineres
 docker-compose up --build -d
@@ -72,6 +83,58 @@ docker-compose up --build -d
 # 3. Acesse a aplicação
 # Abra seu navegador e acesse: http://localhost
 ```
+
+### 🐳 Serviços Docker Disponíveis
+
+A aplicação agora inclui os seguintes serviços containerizados:
+
+| Serviço | Imagem | Porta | Descrição |
+|---------|--------|-------|-----------|
+| **Frontend** | `nginx:stable-alpine` | `80` | Interface React servida pelo Nginx |
+| **Backend** | `python:3.9-slim` | `5000` | API Flask com Gunicorn |
+| **Database** | `postgres:15-alpine` | `5432` | Banco de dados PostgreSQL |
+| **Cache** | `redis:7-alpine` | `6379` | Cache Redis para performance |
+| **DB Admin** | `adminer:4-standalone` | `8081` | Interface web para gerenciar o banco |
+
+### 🔧 Comandos Úteis
+
+```bash
+# Ver status dos containers
+docker-compose ps
+
+# Ver logs em tempo real
+docker-compose logs -f
+
+# Parar todos os serviços
+docker-compose down
+
+# Reiniciar com rebuild
+docker-compose up --build -d
+
+# Resolver problemas de containers órfãos
+./restart-docker.sh
+
+# Limpeza completa (remove containers, imagens e volumes)
+./docker-cleanup.sh
+```
+
+### 📋 Formato do Arquivo CSV
+
+O arquivo CSV deve conter as seguintes colunas:
+- **PRODUTO**: Nome do produto
+- **STATUS**: Status atual (perdendo, ganhando, etc.)
+- **LOJISTA**: Nome do marketplace/lojista
+- **PRECO**: Preço atual do produto
+- **MAIS BARATO**: Menor preço encontrado na concorrência
+- **DIFERENÇA**: Diferença em valor absoluto
+- **PERCENTUAL**: Diferença percentual
+
+### 🎯 Exemplo de Uso
+
+1. Faça upload de um arquivo CSV com dados de preços
+2. A aplicação processará os dados e identificará oportunidades
+3. Visualize os resultados no dashboard interativo
+4. Analise os insights de Machine Learning para tomada de decisão
 
 ---
 

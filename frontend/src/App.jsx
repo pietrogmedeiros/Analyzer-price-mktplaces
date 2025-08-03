@@ -6,7 +6,7 @@ import DashboardPage from './components/DashboardPage';
 // --- ALTERAÇÃO AQUI ---
 // Lê a URL da API da variável de ambiente VITE_API_URL.
 // Se não estiver definida, usa um valor padrão para garantir que funcione.
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 function App() {
   const [selectedFile, setSelectedFile] = useState(null);

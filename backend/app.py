@@ -12,7 +12,8 @@ import numpy as np
 # 1. INICIALIZAÇÃO DO FLASK E CONFIGURAÇÃO DO CORS
 app = Flask(__name__)
 # Permite requisições da origem do seu frontend para TODAS as rotas
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
+# Configurado para aceitar tanto desenvolvimento (5173) quanto produção (80)
+CORS(app, resources={r"/*": {"origins": ["http://localhost", "http://localhost:5173", "http://127.0.0.1", "http://127.0.0.1:5173"]}})
 
 # Função para formatar valores monetários (não usada na resposta da API, mas pode ser útil)
 def format_currency_br(value):
@@ -140,6 +141,10 @@ def analyze_csv_route():
     except Exception as e:
         print(f"Erro inesperado no servidor: {e}")
         return jsonify({"error": f"Erro inesperado no servidor: {str(e)}"}), 500
+
+@app.route('/', methods=['GET'])
+def health_check():
+    return jsonify({"status": "OK", "message": "WebPrice Analyzer API está funcionando!"})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

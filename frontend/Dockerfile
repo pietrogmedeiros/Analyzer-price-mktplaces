@@ -14,6 +14,10 @@ RUN npm install
 # Copia o resto do código do frontend
 COPY . .
 
+# Define a variável de ambiente para o build
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
+
 # Executa o build de produção do Vite
 RUN npm run build
 
